@@ -1,7 +1,7 @@
 package com.climalert.schedulers;
 
 import com.climalert.dtos.ClimaResumen;
-import com.climalert.dtos.RespuestaClimaApiDTO;
+import com.climalert.dtos.WeatherApiResponseDTO;
 import com.climalert.modelsEntities.WeatherApiClient;
 import com.climalert.repositories.HistorialClimaRepository;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,7 +24,7 @@ public class WeatherScheduler {
     //5 minutos = 300000ms
     @Scheduled(fixedDelay = 300000, initialDelay = 0)
     public void obtenerYGuardarClima(){
-        RespuestaClimaApiDTO respuesta = weatherApiClient.obtenerClimaActual();
+        WeatherApiResponseDTO respuesta = weatherApiClient.obtenerClimaActual();
 
         ClimaResumen registro = new ClimaResumen(
                 respuesta.current().temperatura(),

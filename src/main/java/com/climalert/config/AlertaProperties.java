@@ -11,5 +11,5 @@ public class AlertaProperties {
     private double limiteTemperatura;
     private double limiteHumedad;
     private List<String> destinatarios;
-
+    private String remitente;
 }

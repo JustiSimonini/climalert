@@ -1,7 +1,7 @@
 package com.climalert.modelsEntities;
 
 import com.climalert.config.WeatherApiProperties;
-import com.climalert.dtos.RespuestaClimaApiDTO;
+import com.climalert.dtos.WeatherApiResponseDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,7 +18,7 @@ public class WeatherApiClient {
         this.restTemplate = restTemplate;
     }
 
-    public RespuestaClimaApiDTO obtenerClimaActual(){
+    public WeatherApiResponseDTO obtenerClimaActual(){
         URI uri = UriComponentsBuilder
                 .fromUriString(properties.getBaseUrl())
                 .path("/current.json")
@@ -27,7 +27,7 @@ public class WeatherApiClient {
                 .build()
                 .toUri();
 
-        return restTemplate.getForObject(uri, RespuestaClimaApiDTO.class);
+        return restTemplate.getForObject(uri, WeatherApiResponseDTO.class);
     }
 
 
